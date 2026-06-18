@@ -57,3 +57,202 @@ body {
     color: #666;
     letter-spacing: 0.15em;
 }
+
+/* ---------- skills / keyboard ---------- */
+.skills {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: clamp(3rem, 8vw, 6rem) 1.5rem;
+    border-top: 1px solid #f0f0f0;
+}
+
+.skills-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #b8901f;
+    margin-bottom: 0.75rem;
+}
+
+.skills-title {
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.skills-title .accent {
+    background: linear-gradient(transparent 60%, #FFDA44 60%);
+}
+
+.skills-sub {
+    margin-top: 1rem;
+    max-width: 42ch;
+    color: #666;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+/* board */
+.stage {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    overflow-x: auto;
+    padding: 0 0.25rem 0.5rem;
+}
+
+.board {
+    --u: clamp(30px, 5.4vw, 48px);
+    --gap: clamp(4px, 0.9vw, 7px);
+    --depth: 4px;
+    background: #f4f4f5;
+    border: 1px solid #e6e6e9;
+    padding: calc(var(--gap) * 2.4);
+    border-radius: 14px;
+    box-shadow: inset 0 1px 0 #fff, 0 10px 30px -12px rgba(0, 0, 0, 0.18);
+    flex: none;
+}
+
+.row {
+    display: flex;
+    gap: var(--gap);
+    margin-bottom: calc(var(--gap) + var(--depth));
+}
+
+.row:last-child { margin-bottom: 0; }
+
+/* keycap */
+.key {
+    position: relative;
+    width: calc(var(--u) * var(--w, 1) + var(--gap) * (var(--w, 1) - 1));
+    height: var(--u);
+    border: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    --top: #fafafa;
+    --edge: #dcdce0;
+    --label: #6b6b70;
+}
+
+.key.light {
+    --top: #fff;
+    --edge: #dcdce0;
+    --label: #444;
+}
+
+.cap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--top);
+    border: 1px solid var(--edge);
+    border-radius: 7px;
+    box-shadow: 0 var(--depth) 0 var(--edge);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+
+.legend {
+    font-size: var(--fs, clamp(0.5rem, 1.15vw, 0.7rem));
+    font-weight: 500;
+    color: var(--label);
+    line-height: 1;
+    white-space: nowrap;
+}
+
+.sub-legend {
+    font-size: 0.5rem;
+    font-weight: 400;
+    color: #aaa;
+}
+
+/* pressed feel */
+.key:hover .cap,
+.key:focus-visible .cap {
+    transform: translateY(var(--depth));
+    box-shadow: 0 0 0 var(--edge);
+}
+
+.key:focus-visible { outline: none; }
+
+.key:focus-visible .cap {
+    border-color: #FFDA44;
+    box-shadow: 0 0 0 var(--edge), 0 0 0 3px rgba(255, 218, 68, 0.55);
+}
+
+.key.tech:hover .cap,
+.key.tech:focus-visible .cap {
+    box-shadow: 0 0 0 var(--edge), 0 0 14px -2px var(--glow);
+}
+
+/* readout */
+.readout {
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    width: min(560px, 94vw);
+    background: #fff;
+    border: 1px solid #ececef;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px -14px rgba(0, 0, 0, 0.2);
+    padding: 1.25rem 1.4rem;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    min-height: 104px;
+    text-align: left;
+}
+
+.readout .swatch {
+    width: 14px;
+    height: 14px;
+    flex: none;
+    margin-top: 5px;
+    border-radius: 4px;
+    background: var(--ro-color, #ccc);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ro-color, #ccc) 18%, transparent);
+}
+
+.readout .meta { flex: 1; min-width: 0; }
+
+.readout .tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ro-tag, #999);
+}
+
+.readout .name {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin: 0.35rem 0 0.4rem;
+}
+
+.readout .note {
+    color: #666;
+    font-weight: 300;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.skills-hint {
+    margin-top: 1.25rem;
+    font-size: 0.75rem;
+    color: #999;
+}
+
+.skills-hint b { color: #b8901f; }
+
+@media (prefers-reduced-motion: reduce) {
+    .cap { transition: none; }
+}

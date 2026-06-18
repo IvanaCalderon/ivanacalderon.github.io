@@ -44,6 +44,29 @@
         <p class="hero-subtitle">Building digital experiences with ☕ and 🐱</p>
     </section>
 
+    <section class="skills" id="skills">
+        <header class="skills-head">
+            <h2 class="skills-title">My stack, mapped to <span class="accent">a keyboard</span></h2>
+            <p class="skills-sub">A real 60% layout — the colored caps are the tech I build with. Hover or tab any of them.</p>
+        </header>
+
+        <div class="stage">
+            <div class="board" id="board" role="group" aria-label="Skills keyboard"></div>
+        </div>
+
+        <div class="readout" id="readout" aria-live="polite">
+            <span class="swatch" style="--ro-color:#FFDA44"></span>
+            <div class="meta">
+                <div class="tag" style="--ro-tag:#b8901f">Press a key</div>
+                <div class="name">Hover a colored cap</div>
+                <div class="note">The grey keys are a normal keyboard. The colored ones are my toolkit — pick one.</div>
+            </div>
+        </div>
+
+        <p class="skills-hint">tab + <b>← →</b> to walk the board</p>
+    </section>
+
     <script src="js/main.js"></script>
+    <script src="js/keyboard.js"></script>
 </body>
 </html>
